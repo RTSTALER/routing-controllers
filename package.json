@@ -45,6 +45,8 @@
     "express": "^4.17.1",
     "express-session": "^1.17.1",
     "glob": "^7.1.4",
+    "nanoexpress": "^2.0.4",
+    "nanoexpress-pro": "^2.2.4",
     "reflect-metadata": "^0.1.13",
     "template-url": "^1.0.0"
   },

@@ -7,6 +7,7 @@ import {RoutingControllers} from "./RoutingControllers";
 import {RoutingControllersOptions} from "./RoutingControllersOptions";
 import {ValidationOptions} from "class-validator";
 import {importClassesFromDirectories} from "./util/importClassesFromDirectories";
+import { NanoExpressDriver } from "./driver/nanoExpress/NanoExpressDriver";
 
 // -------------------------------------------------------------------------
 // Main exports
@@ -114,6 +115,22 @@ export function getMetadataArgsStorage(): MetadataArgsStorage {
  */
 export function useExpressServer<T>(expressApp: T, options?: RoutingControllersOptions): T {
     const driver = new ExpressDriver(expressApp);
+    return createServer(driver, options);
+}
+
+/**
+ * Registers all loaded actions in your express application.
+ */
+export function useNanoExpressServer<T>(expressApp: T, options?: RoutingControllersOptions): T {
+    const driver = new NanoExpressDriver(expressApp);
+    return createServer(driver, options);
+}
+
+/**
+ * Registers all loaded actions in your nanoExpress application.
+ */
+export function createNanoExpressServer(options?: RoutingControllersOptions): any {
+    const driver = new NanoExpressDriver();
     return createServer(driver, options);
 }
 
